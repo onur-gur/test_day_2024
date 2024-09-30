@@ -33,6 +33,5 @@ target
 .mvn
 mvnw
 .idea
-pact-contract.iml
 .iml
 .DS_Store
