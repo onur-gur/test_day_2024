@@ -29,9 +29,12 @@ build/
 
 ### VS Code ###
 .vscode/
-target
-.mvn
-mvnw
 .idea
 .iml
 .DS_Store
+
+# Maven specific files
+target/
+.mvn/
+mvnw
+mvnw.cmd
