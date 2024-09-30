@@ -1,0 +1,19 @@
+server:
+  port: 9091
+
+spring:
+  profiles:
+    active: it
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/store?useUniCode_true&useSSL=false&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 12345
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true

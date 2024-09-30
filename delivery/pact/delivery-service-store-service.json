@@ -1,0 +1,97 @@
+{
+  "consumer": {
+    "name": "delivery-service"
+  },
+  "interactions": [
+    {
+      "description": "a request to search store list",
+      "providerState": "it_should_search",
+      "request": {
+        "method": "GET",
+        "path": "/store/search",
+        "query": "x=10.0&y=20.0"
+      },
+      "response": {
+        "body": {
+          "stores": [
+            {
+              "address": "123 Main St, City, Country",
+              "deliveryArea": [
+                {
+                  "x": 37.7749,
+                  "y": -122.4194
+                }
+              ],
+              "deliveryType": "SCHEDULED",
+              "email": "example@store.com",
+              "id": 1,
+              "logoUrl": "http://example.com/logo.png",
+              "name": "Store 1",
+              "phone": "+1234567890",
+              "status": "ACTIVE",
+              "workingStatus": "OPEN"
+            }
+          ]
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "$.body.stores": {
+            "match": "type",
+            "min": 1
+          },
+          "$.body.stores[*].address": {
+            "match": "type"
+          },
+          "$.body.stores[*].deliveryArea": {
+            "match": "type",
+            "min": 1
+          },
+          "$.body.stores[*].deliveryArea[*].x": {
+            "match": "type"
+          },
+          "$.body.stores[*].deliveryArea[*].y": {
+            "match": "type"
+          },
+          "$.body.stores[*].deliveryType": {
+            "match": "type"
+          },
+          "$.body.stores[*].email": {
+            "match": "type"
+          },
+          "$.body.stores[*].id": {
+            "match": "type"
+          },
+          "$.body.stores[*].logoUrl": {
+            "match": "type"
+          },
+          "$.body.stores[*].name": {
+            "match": "type"
+          },
+          "$.body.stores[*].phone": {
+            "match": "type"
+          },
+          "$.body.stores[*].status": {
+            "match": "type"
+          },
+          "$.body.stores[*].workingStatus": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.4.4"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "store-service"
+  }
+}

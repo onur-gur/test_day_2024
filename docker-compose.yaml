@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  pact-broker:
+    image: dius/pact-broker:latest
+    container_name: pact-broker
+    ports:
+      - 80:80
+    environment:
+      PACT_BROKER_DATABASE_USERNAME: pactuser
+      PACT_BROKER_DATABASE_PASSWORD: pactpassword
+      PACT_BROKER_DATABASE_HOST: db
+      PACT_BROKER_DATABASE_NAME: pactbroker
+      PACT_BROKER_BASIC_AUTH_USERNAME: test_day
+      PACT_BROKER_BASIC_AUTH_PASSWORD: test_day
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    container_name: pact-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "pactuser"
+      POSTGRES_PASSWORD: "pactpassword"
+      POSTGRES_DB: "pactbroker"
+    volumes:
+      - pact-db-data:/var/lib/postgresql/data
+
+volumes:
+  pact-db-data:
+    driver: local

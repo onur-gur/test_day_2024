@@ -1,0 +1,23 @@
+server:
+  port: 9090
+
+spring:
+  profiles:
+    active: it
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/delivery?useUniCode_true&useSSL=false&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 12345
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+store-api:
+  baseUrl: http://localhost/9091
+  storeSearchUrl: /store/search?
